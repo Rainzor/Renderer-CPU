@@ -27,7 +27,7 @@ If you don't want to use **Qt5** as the framework, just go to [example](./exampl
 
 ```shell
 cd example
-.\run.sh
+sh .\run.sh
 ```
 
 ### OpenMP
