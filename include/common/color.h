@@ -34,7 +34,7 @@ inline void write_color(std::ostream& out, color pixel_color, int samples_per_pi
         << static_cast<int>(256 * clamp(b, 0.0, 0.999)) << '\n';
 }
 
-inline void write_img(const char* filename, int width ,int height,const std::vector<color>& img, int samples_per_pixel) {
+inline void write_img(const char* filename, int width ,int height,const std::vector<color>& img, int samples_per_pixel=1) {
     int num_channels = 3;
     char *data = new char[width * height * num_channels];
     int index = 0;
@@ -50,7 +50,8 @@ inline void write_img(const char* filename, int width ,int height,const std::vec
             if (b != b) b = 0.0;
 
             // Divide the color by the number of samples and gamma-correct for gamma=2.0.
-            auto scale = 1.0 / samples_per_pixel;
+            // float scale = 1.0 / samples_per_pixel;
+            float scale = 1.0;
             r = sqrt(scale * r);
             g = sqrt(scale * g);
             b = sqrt(scale * b);

@@ -10,9 +10,9 @@ A Renderer is based on ray tracing.
 cmake -B build
 cmake --build build
 ````
-### Qt
+### Qt5
 
-The UI is based on Qt 5. Before using [CMakeLists.txt](CMakeLists.txt), please change Qt's path here
+The UI is based on **Qt5**. Before using [CMakeLists.txt](CMakeLists.txt), please change Qt5's path here
 
 ```` cmake
 #CMakeLists.txt
@@ -23,7 +23,12 @@ set(CMAKE_PREFIX_PATH "D:/Qt/5.15.2/mingw81_64")
 ````
 ### Example
 
-If you don't want to use Qt as the framework, just go to [example](./example) and run `run.bat` on **WINDOWS OS**.
+If you don't want to use **Qt5** as the framework, just go to [example](./example) and run `run.sh` on **Linux OS**.
+
+```shell
+cd example
+.\run.sh
+```
 
 ### OpenMP
 

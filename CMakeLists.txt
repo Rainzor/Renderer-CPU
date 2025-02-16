@@ -14,7 +14,7 @@ set(CMAKE_AUTOUIC ON)
 # Set to c++11
 set ( CMAKE_CXX_STANDARD 17 )
 #Change Qt Path
-set(CMAKE_PREFIX_PATH "D:/Qt/5.15.2/mingw81_64")
+set(CMAKE_PREFIX_PATH "D:/Dev/Qt/6.8.0/mingw_64")
 
 find_package(OpenMP)
 if (OPENMP_FOUND)
@@ -24,7 +24,7 @@ if (OPENMP_FOUND)
     set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
-find_package(Qt5 COMPONENTS
+find_package(Qt6 COMPONENTS
         Core
         Gui
         Widgets
@@ -47,9 +47,9 @@ add_executable(Example ./example/example.cpp ${SOURCE_FILES})
 add_executable(TEST ./test.cpp ${SOURCE_FILES})
 
 target_link_libraries(Renderer
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Widgets
         )
 
 if (WIN32 AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
@@ -76,7 +76,7 @@ if (WIN32 AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
     foreach (QT_LIB Core Gui Widgets)
         add_custom_command(TARGET Renderer POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy
-                "${QT_INSTALL_PATH}/bin/Qt5${QT_LIB}${DEBUG_SUFFIX}.dll"
+                "${QT_INSTALL_PATH}/bin/Qt6${QT_LIB}${DEBUG_SUFFIX}.dll"
                 "$<TARGET_FILE_DIR:Renderer>")
     endforeach (QT_LIB)
 endif ()

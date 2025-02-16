@@ -1,5 +1,6 @@
 #include "RenderEngine.h"
 
+// Main Loop
 color RenderEngine::computePixelColor(int i, int j, int spp, SampleMethod method) const {
     double u, v;
     ray r;
@@ -10,7 +11,8 @@ color RenderEngine::computePixelColor(int i, int j, int spp, SampleMethod method
         r = scene.cam->get_ray(u, v);
         pixel_color += ray_color(r, method);
     }
-    return pixel_color;
+    pixel_color = pixel_color*(1.0 / spp);
+    return pixel_color; 
 }
 
 void RenderEngine::render(int spp, SampleMethod method, const std::string &img_name, bool isOpenMP) {

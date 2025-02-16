@@ -12,7 +12,7 @@ using namespace std;
 model::model(const char *filePath) {
     ModelImporter modelImporter = ModelImporter();
     modelImporter.parseOBJ(filePath); // uses modelImporter to get vertex information
-    numVertices = modelImporter.getNumVertices(); // 出错，这里的数值还是0
+    numVertices = modelImporter.getNumVertices();
     numTriangles = modelImporter.getNumTriangles();
     std::vector<float> verts;
     modelImporter.getTriangleVertices(verts);
@@ -54,7 +54,7 @@ model::model(const char *filePath) {
 
 }
 
-int model::getNumVertices() { return numVertices; } // accessors // 出错，这里的数值还是0
+int model::getNumVertices() { return numVertices; } 
 
 int model::getNumTriangles() { return numTriangles; }
 
@@ -169,7 +169,7 @@ void ModelImporter::parseOBJ(const char *filePath) {
     }
 }
 
-int ModelImporter::getNumVertices() { return (vertVals.size() / 3); } // accessors  // 先注释，为了调试，等调试结束再解除注释
+int ModelImporter::getNumVertices() { return (vertVals.size() / 3); } 
 
 int ModelImporter::getNumTriangles() { return (triangleVerts.size() / 9); }
 
