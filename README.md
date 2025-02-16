@@ -7,8 +7,8 @@ A Renderer is based on ray tracing.
 ### Run [CMakeLists.txt](CMakeLists.txt)
 
 ````shell
-cmake -B build      # 生成构建目录
-cmake --build build # 执行构建
+cmake -B build
+cmake --build build
 ````
 ### Qt
 
@@ -23,8 +23,7 @@ set(CMAKE_PREFIX_PATH "D:/Qt/5.15.2/mingw81_64")
 ````
 ### Example
 
-If you don't want to use Qt as the framework, just go to [example](./example) and run `run.bat`
-in **WINDOWS OS**.
+If you don't want to use Qt as the framework, just go to [example](./example) and run `run.bat` on **WINDOWS OS**.
 
 ### OpenMP
 
@@ -35,7 +34,7 @@ The Render is accelerated by **OpenMP**. Make sure your compiler support it.
 ### Cornell Box
 
 <div align="center">
-    <img src="./output/default.png" width="300" title="Cornell Box">
+    <img src="./assets/default.png" width="300" title="Cornell Box">
     <div style="">
         Figure : Cornell Box
     </div>
@@ -44,7 +43,7 @@ The Render is accelerated by **OpenMP**. Make sure your compiler support it.
 ### Bunny and Spot Cow
 
 <div align="center">
-    <img src="./output/zoom.png" width="300" title="Bunny">
+    <img src="./assets/zoom.png" width="300" title="Bunny">
     <div style="">
         Figure : Bunny and Spot
     </div>
@@ -63,7 +62,7 @@ The Render is accelerated by **OpenMP**. Make sure your compiler support it.
   - [ ] GPU Parallel: CUDA
 - [ ] Cook-Torrance BRDF
 - [ ] Ray-Marching in volume rendering
-- [ ] Load scene in json format
+- [ ] Load scene in `json` format
 
 
 ## Reference
