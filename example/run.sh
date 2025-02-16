@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Building the project..."
-make
+make -j$(nproc)
 if [ $? -ne 0 ]; then
     echo "Build failed. Exiting."
     exit 1
