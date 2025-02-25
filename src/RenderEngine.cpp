@@ -11,7 +11,6 @@ color RenderEngine::computePixelColor(int i, int j, int spp, SampleMethod method
         r = scene.cam->get_ray(u, v);
         pixel_color += ray_color(r, method);
     }
-    pixel_color = pixel_color*(1.0 / spp);
     return pixel_color; 
 }
 
@@ -241,11 +240,10 @@ color RenderEngine::NEE_sample(const ray &r, int depth, bool is_shadow) const {
     if (srec.is_specular||srec.is_refract) {
         return srec.attenuation * NEE_sample(srec.scatter_ray, depth, is_shadow) / p_RR;
     }
-    if (is_shadow) {
+    if (is_shadow) { //若光线没有追踪到光源，不是镜面反射，且是最后的shadow ray 则返回0
         return color(0, 0, 0);
     }
 
-    //若光线没有追踪到光源，不是镜面反射，且是最后的shadow ray 则返回0
     //直接光照
     auto light_pdf_ptr = make_shared<hittable_pdf>(scene.lights, rec.p);
     vecf3 light_direction = unit_vector(light_pdf_ptr->generate());
@@ -304,7 +302,7 @@ color RenderEngine::Muliti_Importance_sample(const ray &r, int depth, double emi
     color emitted = rec.mat_ptr->emitted(r, rec, rec.u, rec.v, rec.p); // 发射光线的颜色
     if (!rec.mat_ptr->scatter(r, rec, srec)) {
         return emitted * emitted_weight;
-    } else if (srec.is_medium && is_shadow) {
+    } else if (srec.is_medium && is_shadow) { // 体渲染
         struct hit_record rec_lgt;
         ray shadow_ray = ray(rec.p + r.direction() * 0.001, r.direction(), r.time());
         if (!rec.boundary_ptr->hit(shadow_ray, 0.001, infinity, rec_lgt)) { // 在0-infinity范围内找到内表面位置

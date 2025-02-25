@@ -64,7 +64,7 @@ void cornell_specular(Scene& scene){
     objects.add(make_shared<xz_rect>(0, 555, 0, 555, 555, white));
     objects.add(make_shared<xy_rect>(0, 555, 0, 555, 555, white));
 
-//   金属材质
+    //金属材质
     shared_ptr<material> aluminum = make_shared<metal>(color(0.8, 0.85, 0.88), 0.0);
     shared_ptr<hittable> box1 = make_shared<box>(pointf3(0, 0, 0), pointf3(165, 330, 165), aluminum);
     box1 = make_shared<rotate>(box1, 15,Axis::Y);

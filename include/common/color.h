@@ -50,8 +50,7 @@ inline void write_img(const char* filename, int width ,int height,const std::vec
             if (b != b) b = 0.0;
 
             // Divide the color by the number of samples and gamma-correct for gamma=2.0.
-            // float scale = 1.0 / samples_per_pixel;
-            float scale = 1.0;
+            float scale = 1.0 / samples_per_pixel;
             r = sqrt(scale * r);
             g = sqrt(scale * g);
             b = sqrt(scale * b);

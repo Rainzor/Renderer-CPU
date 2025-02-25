@@ -13,8 +13,8 @@ Scatter_record结构体用来记录材料的散射信息
 struct scatter_record {
     ray scatter_ray;//光线
     bool is_specular= false;//是否为镜面反射
-    bool is_medium = false;
-    bool is_refract = false;
+    bool is_medium = false;// 是否为参与介质
+    bool is_refract = false;// 是否为折射
     color attenuation;//材质的吸收系数
     shared_ptr<pdf> pdf_ptr;//散射光线的概率分布函数
 };
@@ -57,8 +57,6 @@ public:
     virtual void getType(material_type &m) const {
         return;
     }
-
-public:
 };
 // 漫反射粗糙材质
 class lambertian : public material {
