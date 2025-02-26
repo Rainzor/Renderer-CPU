@@ -18,7 +18,7 @@ The UI is based on **Qt5**. Before using [CMakeLists.txt](CMakeLists.txt), pleas
 #CMakeLists.txt
 ....
 #Change Qt Path
-set(CMAKE_PREFIX_PATH "D:/Qt/5.15.2/mingw81_64")
+set(QT_PATH "D:/Qt/5.15.2/mingw81_64")
 ....
 ````
 ### Example
@@ -61,13 +61,12 @@ The Render is accelerated by **OpenMP**. Make sure your compiler support it.
 - [x] Material: diffuse reflection, specular reflection, refraction, participating media and light source
 - [x] Texture: solid color, noise texture and image texture mapping
 - [x] Advanced Sampling: BRDF sampling, light sampling, NEE, multiple importance sampling
-- [ ] Acceleration:
+- [x] Acceleration:
   - [x] BVH
   - [x] CPU Parallel: OpenMP
-  - [ ] GPU Parallel: CUDA
+  - [x] GPU Parallel: CUDA
 - [ ] Cook-Torrance BRDF
 - [ ] Ray-Marching in volume rendering
-- [ ] Load scene in `json` format
 
 
 ## Reference
