@@ -19,7 +19,7 @@ void RenderEngine::render(int spp, SampleMethod method, const std::string &img_n
     omp_set_num_threads(NUM_THREADS);
 
     auto start = high_resolution_clock::now();
-    std::cout << "Rendering..." << std::endl;
+	std::cout << "Rendering " << width << "x" << height << " image with " << spp << " samples per pixel." << std::endl;
     std::vector<color> img(width * height, color(0, 0, 0));
 
     int i, j, k;
@@ -72,9 +72,7 @@ void RenderEngine::render(int spp, SampleMethod method, const std::string &img_n
     std::cerr << std::endl << "Time Cost:"
               << duration.count() / 60 << "min"
               << duration.count() % 60 << "s" << std::endl;
-    std::cerr << "Writing to " << img_name << std::endl;
     std::cerr << "Done.\n" << std::endl;
-
 }
 
 color RenderEngine::ray_color(const ray &r, SampleMethod method) const {

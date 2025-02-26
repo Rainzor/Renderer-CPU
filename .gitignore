@@ -1,6 +1,6 @@
 # User-specific stuff
 .idea/
-
+.vscode/
 # CMake
 cmake-build-*/
 
@@ -20,7 +20,6 @@ output/
 *.slo
 *.lo
 *.o
-*.obj
 
 # Precompiled Headers
 *.gch

@@ -39,7 +39,7 @@ public:
     void setProgressCallback(const std::function<void(int)> &callback) {
         progressCallback = callback;
     }
-    void render(int spp=16, SampleMethod method = SampleMethod::BRDF,const std::string& img_name="./output/img.png",bool isOpenMP=true);
+    void render(int spp=16, SampleMethod method = SampleMethod::BRDF,const std::string& img_name="./img.png",bool isOpenMP=true);
 
 private:
     color computePixelColor(int i, int j, int spp, SampleMethod method)const;

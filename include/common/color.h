@@ -5,6 +5,11 @@
 #include "rtw_stb_image.h"
 #include <iostream>
 #include <vector>
+#include <filesystem>
+#include <string>
+
+namespace fs = std::filesystem; // 使用命名空间简化代码
+
 
 inline void write_color(std::ostream &out, color pixel_color) {
     // Write the translated [0,255] value of each color component.
@@ -34,7 +39,7 @@ inline void write_color(std::ostream& out, color pixel_color, int samples_per_pi
         << static_cast<int>(256 * clamp(b, 0.0, 0.999)) << '\n';
 }
 
-inline void write_img(const char* filename, int width ,int height,const std::vector<color>& img, int samples_per_pixel=1) {
+inline int write_img(const char* path, int width ,int height,const std::vector<color>& img, int samples_per_pixel=1) {
     int num_channels = 3;
     char *data = new char[width * height * num_channels];
     int index = 0;
@@ -62,7 +67,20 @@ inline void write_img(const char* filename, int width ,int height,const std::vec
         }
     }
 
-    stbi_write_png(filename, width, height, num_channels, data, width * num_channels);
+	std::string folder_path, file_name;
+    folder_path = fs::path(path).parent_path().string();
+    if (!fs::exists(folder_path)) {
+        return fs::create_directories(folder_path);
+    }
+
+    if (stbi_write_png(path, width, height, num_channels, data, width * num_channels)) {
+        std::cout << "Write to " << path << " successfully." << std::endl;
+		return 0;
+    }
+    else {
+        std::cerr << "Write to " << path << " failed." << std::endl;
+		return -1;
+    }
 
     delete [] data;
 }

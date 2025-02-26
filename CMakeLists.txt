@@ -11,13 +11,8 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-# Set to c++11
-set ( CMAKE_CXX_STANDARD 17 )
-#Change Qt Path
-set(QT_PATH "")
-if (QT_PATH STREQUAL "")
-    message(FATAL_ERROR "Please set QT_PATH to the Qt installation path")
-endif ()
+#Add Qt Path Here
+list(APPEND CMAKE_PREFIX_PATH "")
 
 find_package(OpenMP)
 if (OPENMP_FOUND)
@@ -60,7 +55,7 @@ if (WIN32 AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
     if (MSVC AND CMAKE_BUILD_TYPE MATCHES "Debug")
         set(DEBUG_SUFFIX "d")
     endif ()
-    set(QT_INSTALL_PATH "${QT_PATH}")
+    set(QT_INSTALL_PATH "${CMAKE_PREFIX_PATH}")
     if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
         set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
         if (NOT EXISTS "${QT_INSTALL_PATH}/bin")

@@ -7,20 +7,13 @@ A Renderer is based on ray tracing.
 ### Run [CMakeLists.txt](CMakeLists.txt)
 
 ````shell
-cmake -B build
+cmake -B build -DCMAKE_PREFIX_PATH="Path_TO_QT5"
 cmake --build build
 ````
 ### Qt5
 
-The UI is based on **Qt5**. Before using [CMakeLists.txt](CMakeLists.txt), please change Qt5's path here
+The UI is based on **Qt5**, so you must specific the the QT path.
 
-```` cmake
-#CMakeLists.txt
-....
-#Change Qt Path
-set(QT_PATH "D:/Qt/5.15.2/mingw81_64")
-....
-````
 ### Example
 
 If you don't want to use **Qt5** as the framework, just go to [example](./example) and run `run.sh` on **Linux OS**.
