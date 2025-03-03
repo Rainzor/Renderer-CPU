@@ -57,7 +57,7 @@ The Render is accelerated by **OpenMP**. Make sure your compiler support it.
 - [x] Acceleration:
   - [x] BVH
   - [x] CPU Parallel: OpenMP
-  - [x] GPU Parallel: CUDA
+  - [x] GPU Parallel: [CUDA](https://github.com/Rainzor/Renderer-CUDA)
 - [ ] Cook-Torrance BRDF
 - [ ] Ray-Marching in volume rendering
 
